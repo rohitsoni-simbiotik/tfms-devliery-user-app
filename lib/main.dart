@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'pages/common/SplashPage.dart';
+import 'package:tfms_delivery_user_app/pages/common/LoginPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,11 +13,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'TFMS Delivery User App',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       initialRoute: "/",
-      getPages: [GetPage(name: "/", page: () => const SplashPage())],
+      getPages: [GetPage(name: "/", page: () => const LoginPage())],
     );
   }
 }

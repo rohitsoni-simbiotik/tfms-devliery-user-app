@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:get/get_utils/src/get_utils/get_utils.dart';
 
 class InputUtils {
   static TextInputFormatter lengthFormatter(int length) =>
@@ -18,5 +19,16 @@ class InputUtils {
       }
       return newValue;
     });
+  }
+
+  static validateEmail(String? value) {
+    if (value != null) {
+      if (value.isEmpty) {
+        return 'Please enter valid email address';
+      } else if (!GetUtils.isEmail(value)) {
+        return 'Please enter valid email address';
+      }
+    }
+    return null;
   }
 }

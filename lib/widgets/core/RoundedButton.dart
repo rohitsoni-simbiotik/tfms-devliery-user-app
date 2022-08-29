@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../constants/AppConstants.dart';
 
 class RoundedButton extends StatelessWidget {
@@ -24,7 +25,7 @@ class RoundedButton extends StatelessWidget {
       this.textColor,
       this.splashColor,
       this.padding = const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
-      this.radius = 52,
+      this.radius = 6,
       this.isExpanded = false,
       this.isEnabled = true})
       : super(key: key);
@@ -50,7 +51,7 @@ class RoundedButton extends StatelessWidget {
       btnChild = Text(text!,
           style: Get.textTheme.button!.copyWith(
               color: textColor ?? Colors.white,
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w500,
               fontSize: 16));
     } else {
       btnChild = child;

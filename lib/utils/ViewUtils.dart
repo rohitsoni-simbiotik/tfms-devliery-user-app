@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tfms_delivery_user_app/widgets/core/RoundedButton.dart';
 
 class ViewUtils {
   static removeFocus() {
@@ -97,4 +98,59 @@ class ViewUtils {
           );
         });
   }
+
+  static Widget confirmExitDialogBox({required VoidCallback logoutCallback}) {
+    return AlertDialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      content: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const SizedBox(height: 18),
+            Text("Are you sure?",
+                style: Get.textTheme.subtitle1!
+                    .copyWith(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 6),
+            Text('Do you want to exit an App',
+                textAlign: TextAlign.center, style: Get.textTheme.bodyText1),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                RoundedButton(
+                  onPressed: logoutCallback,
+                  isExpanded: true,
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  text: "Yes",
+                ),
+                const SizedBox(width: 30),
+                RoundedButton(
+                  onPressed: () {
+                    Get.back();
+                  },
+                  isExpanded: true,
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  text: "No",
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+toast(String message, {int duration = 3}) async {
+  Get.showSnackbar(
+    GetSnackBar(
+      message: (message.isBlank ?? true) ? "Error" : message,
+      snackPosition: SnackPosition.BOTTOM,
+      margin: const EdgeInsets.all(16),
+      duration: Duration(seconds: duration),
+      borderRadius: 16,
+      backgroundColor: Colors.black,
+    ),
+  );
 }

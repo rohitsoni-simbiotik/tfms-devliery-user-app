@@ -12,7 +12,7 @@ class AppConstants {
 }
 
 class ColorConstants {
-  static const Color PRIMARY = Color(0xFF01ADEB);
+  static const Color PRIMARY = Color(0xFFFF0018);
   static const Color BACKGROUND = Color(0xFFFFF9F5);
   static const Color PRIMARY_DARK = Color(0xFF38BEFE);
   static const Color PRIMARY_LIGHT = Color(0xFF3ECAFF);
@@ -20,9 +20,10 @@ class ColorConstants {
   static const Color DISABLED_BUTTON = Color.fromARGB(255, 189, 189, 189);
   static const Color DISABLED_TAB = Color(0xFFD0CFD3);
   static const Color WARNING_BACKGROUND = Color(0xFFF9EDDC);
-  static const Color TEXT_GREY = Color(0xFF615B6A);
+  static const Color TEXT_GREY = Color(0xFF646464);
   static const Color SPLASH_GRADIENT_START = Color(0xFFFD7121);
   static const Color SPLASH_GRADIENT_END = Color(0xFFF9D729);
+  static const Color DRAWER_SELECTED = Color(0xFFFFF4F5);
 
   static const Gradient PRIMARY_GRADIENT = LinearGradient(
     colors: [

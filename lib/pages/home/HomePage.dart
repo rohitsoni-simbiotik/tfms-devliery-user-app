@@ -12,33 +12,35 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final _homeController = Get.put(HomeController());
+  final _homeController = Get.find<HomeController>();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _scaffoldKey,
-      appBar: DrawerAppBarWidget(
-          title: 'Delivery Dashboard',
-          leadingCallback: () {
-            _scaffoldKey.currentState?.openDrawer();
+    return Obx(
+      () => Scaffold(
+        key: _scaffoldKey,
+        appBar: DrawerAppBarWidget(
+            title: 'Delivery Dashboard',
+            leadingCallback: () {
+              _scaffoldKey.currentState?.openDrawer();
+            },
+            toggleSwitchCallback: (value) {
+              _homeController.setIsSwitchOn = value;
+            },
+            switchValue: _homeController.isSwitchOn),
+        drawer: const Drawer(child: DrawerPage(drawerIndex: 0)),
+        body: WillPopScope(
+          onWillPop: () async {
+            if (_scaffoldKey.currentState!.isDrawerOpen) {
+              Get.back();
+              return false;
+            } else {
+              return true;
+            }
           },
-          toggleSwitchCallback: (value) {
-            _homeController.setIsSwitchOn = value;
-          },
-          switchValue: _homeController.isSwitchOn),
-      drawer: const Drawer(child: DrawerPage(drawerIndex: 0)),
-      body: WillPopScope(
-        onWillPop: () async {
-          if (_scaffoldKey.currentState!.isDrawerOpen) {
-            Get.back();
-            return false;
-          } else {
-            return true;
-          }
-        },
-        child: Container(),
+          child: Container(),
+        ),
       ),
     );
   }

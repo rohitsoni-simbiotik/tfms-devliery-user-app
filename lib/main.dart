@@ -5,6 +5,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:tfms_delivery_user_app/api/DioClient.dart';
 import 'package:tfms_delivery_user_app/constants/AppConstants.dart';
 import 'package:tfms_delivery_user_app/controller/AuthController.dart';
+import 'package:tfms_delivery_user_app/controller/HomeController.dart';
 import 'package:tfms_delivery_user_app/pages/common/LoginPage.dart';
 import 'package:tfms_delivery_user_app/pages/home/HomePage.dart';
 
@@ -12,6 +13,7 @@ void main() async {
   await GetStorage.init();
   DioClient.init();
   Get.put(AuthController());
+  Get.put(HomeController());
   runApp(const MyApp());
 }
 

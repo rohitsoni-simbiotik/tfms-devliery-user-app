@@ -36,7 +36,7 @@ class _DrawerPageState extends State<DrawerPage> {
           backgroundColor: Colors.transparent),
       extendBodyBehindAppBar: true,
       body: SizedBox(
-        width: Get.width,
+        // width: Get.width,
         height: Get.height,
         child: Stack(
           children: [
@@ -90,14 +90,14 @@ class _DrawerPageState extends State<DrawerPage> {
                   false
               ? CircleAvatar(
                   backgroundColor: Colors.white,
-                  radius: 50,
+                  radius: 44,
                   child: CachedNetworkImage(
                     imageUrl:
                         _authController.userResponseModel.profilePictureUrl ??
                             '',
                     imageBuilder: (context, imageProvider) => Container(
-                      width: 140,
-                      height: 140,
+                      width: 120,
+                      height: 120,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
@@ -108,20 +108,20 @@ class _DrawerPageState extends State<DrawerPage> {
                 )
               : CircleAvatar(
                   backgroundColor: Colors.white,
-                  radius: 50,
+                  radius: 44,
                   child: _authController.userResponseModel.profilePictureUrl ==
                           null
                       ? Image.asset(
                           AssetConstants.USER_PLACEHOLDER,
-                          width: 140,
-                          height: 140,
+                          width: 120,
+                          height: 120,
                         )
                       : null,
                 ),
           const SizedBox(height: 10),
           Text('Welcome, ${_authController.userResponseModel.name ?? 'Anny'}',
               style: Get.textTheme.headline6!
-                  .copyWith(color: Colors.black, fontWeight: FontWeight.bold)),
+                  .copyWith(color: Colors.black, fontWeight: FontWeight.w500)),
           Text(
               'Last Login, ${_authController.userResponseModel.lastLogin ?? '25/08/2022 : 03:00 PM'}',
               style: Get.textTheme.bodyText1!.copyWith(
@@ -133,11 +133,8 @@ class _DrawerPageState extends State<DrawerPage> {
   }
 
   changeDrawerMenuOption(String title) {
-    Get.offAllNamed("/home");
     switch (title) {
       case 'Profile':
-        /* Get.to(() => const HomePage(),
-            transition: Transition.noTransition, duration: Duration.zero);*/
         break;
       case 'Change Password':
         Get.to(() => const ChangePasswordPage(),
@@ -167,12 +164,6 @@ class _DrawerPageState extends State<DrawerPage> {
         child: IntrinsicHeight(
           child: Row(
             children: [
-              /* VerticalDivider(
-                  thickness: 4,
-                  width: 4,
-                  color: widget.drawerIndex == index
-                      ? Colors.red
-                      : Colors.transparent),*/
               Padding(
                 padding: const EdgeInsets.only(left: 12),
                 child: SvgPicture.asset(icon, width: 24),
@@ -182,7 +173,8 @@ class _DrawerPageState extends State<DrawerPage> {
                     const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                 child: Text(title,
                     style: Get.textTheme.subtitle1!.copyWith(
-                        color: Colors.black, fontWeight: FontWeight.w500)),
+                        color: ColorConstants.LIGHT_BLACK,
+                        fontWeight: FontWeight.w500)),
               ),
             ],
           ),

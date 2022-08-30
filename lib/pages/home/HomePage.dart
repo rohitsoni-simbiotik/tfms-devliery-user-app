@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tfms_delivery_user_app/controller/HomeController.dart';
 import 'package:tfms_delivery_user_app/pages/home/DrawerPage.dart';
+import 'package:tfms_delivery_user_app/widgets/DrawerAppBarWidget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -10,18 +12,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final _homeController = Get.put(HomeController());
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
-        toolbarHeight: 0,
-        backgroundColor: Colors.transparent,
-        // iconTheme: IconThemeData(color: Colors.black),
-      ),
-      drawer: const DrawerPage(drawerIndex: 0),
+      appBar: DrawerAppBarWidget(
+          title: 'Delivery Dashboard',
+          leadingCallback: () {
+            _scaffoldKey.currentState?.openDrawer();
+          },
+          toggleSwitchCallback: (value) {
+            _homeController.setIsSwitchOn = value;
+          },
+          switchValue: _homeController.isSwitchOn),
+      drawer: const Drawer(child: DrawerPage(drawerIndex: 0)),
       body: WillPopScope(
         onWillPop: () async {
           if (_scaffoldKey.currentState!.isDrawerOpen) {
@@ -31,19 +38,8 @@ class _HomePageState extends State<HomePage> {
             return true;
           }
         },
-        child: _topBarWidget(),
+        child: Container(),
       ),
     );
-  }
-
-  _topBarWidget() {
-    return Row(children: [
-      IconButton(
-        icon: Icon(Icons.menu),
-        onPressed: () {
-          _scaffoldKey.currentState?.openDrawer();
-        },
-      ),
-    ]);
   }
 }

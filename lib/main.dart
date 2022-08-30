@@ -6,6 +6,7 @@ import 'package:tfms_delivery_user_app/api/DioClient.dart';
 import 'package:tfms_delivery_user_app/constants/AppConstants.dart';
 import 'package:tfms_delivery_user_app/controller/AuthController.dart';
 import 'package:tfms_delivery_user_app/pages/common/LoginPage.dart';
+import 'package:tfms_delivery_user_app/pages/home/HomePage.dart';
 
 void main() async {
   await GetStorage.init();
@@ -47,7 +48,10 @@ class MyApp extends StatelessWidget {
             elevation: 0),
       ),
       initialRoute: "/",
-      getPages: [GetPage(name: "/", page: () => const LoginPage())],
+      getPages: [
+        GetPage(name: "/", page: () => const LoginPage()),
+        GetPage(name: '/home', page: () => const HomePage()),
+      ],
     );
   }
 }

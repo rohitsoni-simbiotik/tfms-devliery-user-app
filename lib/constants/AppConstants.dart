@@ -24,6 +24,9 @@ class ColorConstants {
   static const Color SPLASH_GRADIENT_START = Color(0xFFFD7121);
   static const Color SPLASH_GRADIENT_END = Color(0xFFF9D729);
   static const Color DRAWER_SELECTED = Color(0xFFFFF4F5);
+  static const Color LIGHT_BLACK = Color(0xFF212121);
+  static const Color SHADOW_COLOR = Color(0xFFFF0010);
+  static const Color UNSELECTED_TAB_TEXT = Color(0xFF5C5C5C);
 
   static const Gradient PRIMARY_GRADIENT = LinearGradient(
     colors: [

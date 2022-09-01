@@ -37,10 +37,10 @@ class OrderItems extends StatelessWidget {
                     children: [
                       _detailWidget(
                           'Order ID : ', (orderModel.orderId ?? 0).toString()),
-                      const SizedBox(height: 4),
+                      const SizedBox(height: 6),
                       _detailWidget(
                           'Pickup : ', orderModel.pickupAddress ?? ''),
-                      const SizedBox(height: 4),
+                      const SizedBox(height: 6),
                       _detailWidget(
                           'Deliver : ', orderModel.deliverAddress ?? ''),
                     ]),

@@ -140,6 +140,18 @@ class ViewUtils {
       ),
     );
   }
+
+  static BoxDecoration listItemDecoration = BoxDecoration(
+      borderRadius: BorderRadius.circular(6),
+      color: Colors.white,
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey.withOpacity(0.25),
+          blurRadius: 6,
+          spreadRadius: 2,
+          offset: const Offset(0, 1),
+        )
+      ]);
 }
 
 toast(String message, {int duration = 3}) async {

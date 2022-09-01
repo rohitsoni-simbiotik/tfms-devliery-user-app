@@ -64,6 +64,7 @@ class RoundedButton extends StatelessWidget {
               onPressed?.call();
             }
           : null,
+      style: style,
       child: Row(
         mainAxisSize: isExpanded ? MainAxisSize.max : MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -71,7 +72,6 @@ class RoundedButton extends StatelessWidget {
           btnChild ?? Container(),
         ],
       ),
-      style: style,
     );
   }
 }

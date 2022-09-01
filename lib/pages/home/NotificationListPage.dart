@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:tfms_delivery_user_app/controller/AuthController.dart';
 import 'package:tfms_delivery_user_app/controller/HomeController.dart';
 import 'package:tfms_delivery_user_app/pages/home/DrawerPage.dart';
+import 'package:tfms_delivery_user_app/utils/ViewUtils.dart';
 import 'package:tfms_delivery_user_app/widgets/DrawerAppBarWidget.dart';
 import 'package:tfms_delivery_user_app/widgets/core/ProgressContainerView.dart';
 
@@ -60,17 +61,7 @@ class _NotificationListPageState extends State<NotificationListPage> {
       itemCount: _authController.notificationList.length,
       itemBuilder: (BuildContext context, int index) {
         return Container(
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(6),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.25),
-                  blurRadius: 6,
-                  spreadRadius: 2,
-                  offset: const Offset(0, 1),
-                )
-              ]),
+          decoration: ViewUtils.listItemDecoration,
           margin: const EdgeInsets.symmetric(vertical: 10),
           child: Padding(
             padding: const EdgeInsets.all(10),

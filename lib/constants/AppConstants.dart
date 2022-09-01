@@ -27,6 +27,9 @@ class ColorConstants {
   static const Color LIGHT_BLACK = Color(0xFF212121);
   static const Color SHADOW_COLOR = Color(0xFFFF0010);
   static const Color UNSELECTED_TAB_TEXT = Color(0xFF5C5C5C);
+  static const Color GREEN_COLOR = Color(0xFF15AC48);
+  static const Color BLUE_COLOR = Color(0xFF689DF6);
+  static const Color DARK_BLUE_COLOR = Color(0xFF0085FF);
 
   static const Gradient PRIMARY_GRADIENT = LinearGradient(
     colors: [

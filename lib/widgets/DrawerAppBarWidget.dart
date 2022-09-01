@@ -9,6 +9,7 @@ import 'package:tfms_delivery_user_app/widgets/CustomSwitch.dart';
 
 class DrawerAppBarWidget extends StatelessWidget with PreferredSizeWidget {
   final String? title;
+  final IconData? leadingIcon;
   final VoidCallback? leadingCallback;
   final Function(bool)? toggleSwitchCallback;
   final bool? switchValue;
@@ -16,6 +17,7 @@ class DrawerAppBarWidget extends StatelessWidget with PreferredSizeWidget {
   const DrawerAppBarWidget(
       {Key? key,
       this.title,
+      this.leadingIcon,
       this.leadingCallback,
       this.toggleSwitchCallback,
       this.switchValue})
@@ -26,7 +28,7 @@ class DrawerAppBarWidget extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
         backgroundColor: Colors.transparent,
         leading: IconButton(
-          icon: const Icon(Icons.menu, color: Colors.black),
+          icon: Icon(leadingIcon ?? Icons.menu, color: Colors.black),
           onPressed: leadingCallback,
         ),
         flexibleSpace: Padding(

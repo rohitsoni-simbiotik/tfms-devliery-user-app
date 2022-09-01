@@ -14,4 +14,6 @@ class AssetConstants {
   static const String USER_ICON = 'assets/vectors/user_icon.svg';
   static const String LOCK_ICON = 'assets/vectors/lock_icon.svg';
   static const String LOGOUT_ICON = 'assets/vectors/logout_icon.svg';
+  static const String FORWARD_ARROW_ICON =
+      'assets/vectors/forward_arrow_icon.svg';
 }

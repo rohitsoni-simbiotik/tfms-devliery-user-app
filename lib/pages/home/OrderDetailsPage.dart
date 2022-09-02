@@ -186,6 +186,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(title ?? '',
                   style: Get.textTheme.subtitle1
@@ -193,6 +194,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
               const Spacer(),
               orderStatus != 'Delivered'
                   ? RoundedButton(
+                      height: 34,
                       onPressed: () {
                         _makePhoneCall('tel:${mobileNumber ?? ''}');
                       },
@@ -204,6 +206,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
               const SizedBox(width: 10),
               orderStatus != 'Delivered'
                   ? RoundedButton(
+                      height: 34,
                       onPressed: () {
                         Get.bottomSheet(
                           StoreNavigatorWidget(
@@ -220,7 +223,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                   : const SizedBox(),
             ],
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: orderStatus == 'Delivered' ? 10 : 0),
           Text(label ?? '',
               style: Get.textTheme.subtitle2
                   ?.copyWith(fontWeight: FontWeight.w400)),

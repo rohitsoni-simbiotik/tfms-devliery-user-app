@@ -9,6 +9,7 @@ import 'package:tfms_delivery_user_app/pages/common/LoginPage.dart';
 import 'package:tfms_delivery_user_app/pages/common/OTPPage.dart';
 import 'package:tfms_delivery_user_app/pages/common/ResetPasswordPage.dart';
 import 'package:tfms_delivery_user_app/pages/home/HomePage.dart';
+import 'package:tfms_delivery_user_app/utils/SharedPrefs.dart';
 
 class AuthController extends GetxController {
   final RxBool _showProgress = false.obs;
@@ -99,10 +100,20 @@ class AuthController extends GetxController {
   Future<void> logout() async {
     try {
       _showProgress.value = true;
+      resetApp();
     } catch (e) {
       showError(e);
     } finally {
       _showProgress.value = false;
+    }
+  }
+
+  Future<void> resetApp() async {
+    try {
+      await SharedPrefs.clearAll();
+      Get.offAll(() => const LoginPage());
+    } catch (e) {
+      showError(e);
     }
   }
 

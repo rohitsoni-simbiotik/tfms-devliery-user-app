@@ -15,6 +15,7 @@ class RoundedButton extends StatelessWidget {
   final double radius;
   final bool isExpanded;
   final bool isEnabled;
+  final double? height;
   const RoundedButton(
       {Key? key,
       this.onPressed,
@@ -27,7 +28,8 @@ class RoundedButton extends StatelessWidget {
       this.padding = const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
       this.radius = 6,
       this.isExpanded = false,
-      this.isEnabled = true})
+      this.isEnabled = true,
+      this.height = 46})
       : super(key: key);
 
   @override
@@ -56,21 +58,24 @@ class RoundedButton extends StatelessWidget {
     } else {
       btnChild = child;
     }
-    return ElevatedButton(
-      key: key,
-      onPressed: isEnabled
-          ? () {
-              FocusScope.of(context).requestFocus(FocusNode());
-              onPressed?.call();
-            }
-          : null,
-      style: style,
-      child: Row(
-        mainAxisSize: isExpanded ? MainAxisSize.max : MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          btnChild ?? Container(),
-        ],
+    return SizedBox(
+      height: height,
+      child: ElevatedButton(
+        key: key,
+        onPressed: isEnabled
+            ? () {
+                FocusScope.of(context).requestFocus(FocusNode());
+                onPressed?.call();
+              }
+            : null,
+        style: style,
+        child: Row(
+          mainAxisSize: isExpanded ? MainAxisSize.max : MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            btnChild ?? Container(),
+          ],
+        ),
       ),
     );
   }
